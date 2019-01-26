@@ -32,6 +32,10 @@ stdenv.mkDerivation rec {
     "-Dudev_dir=${placeholder "out"}/lib/udev"
   ];
 
+  preFixup = ''
+    gappsWrapperArgs+=(--set GSD_BACKLIGHT_HELPER "/run/wrappers/bin/gsd-backlight-helper")
+  '';
+
   postPatch = ''
     for f in gnome-settings-daemon/codegen.py plugins/power/gsd-power-constants-update.pl meson_post_install.py; do
       chmod +x $f

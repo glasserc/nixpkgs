@@ -40,6 +40,8 @@ in
 
     services.udev.packages = [ cfg.package ];
 
+    security.wrappers.gsd-backlight-helper.source = "${pkgs.gnome3.gnome-settings-daemon}/libexec/gsd-backlight-helper";
+
   };
 
 }
